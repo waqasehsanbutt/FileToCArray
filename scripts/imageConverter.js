@@ -63,6 +63,15 @@ var imageConverter = {
                 retData = [b15Pixel >> 8, b15Pixel & 255]; // RRRRRGGG|GGBBBBBA
                 newPixelData = [newR * 256 / 32, newG * 256 / 32, newB * 256 / 32, (newA == 1) ? 255 : 0]; // scale the values back to the 0-255 range
                 break;
+			case '15argb':
+				newR = (r * 32 / 256) | 0; // Math.floor()
+                newG = (g * 32 / 256) | 0;
+                newB = (b * 32 / 256) | 0;
+                var newA = (a > 0) ? 1 : 0;
+                var b15Pixel = newA * 32768 + newR * 1024 + newG * 32 + newB;
+                retData = [b15Pixel >> 8, b15Pixel & 255]; // ARRRRRGG|GGGBBBBB
+                newPixelData = [newR * 256 / 32, newG * 256 / 32, newB * 256 / 32, (newA == 1) ? 255 : 0]; // scale the values back to the 0-255 range
+                break;
             case '8':
                 // 1 2 3 4 5 6 7 8
                 // R R R|G G G|B B
