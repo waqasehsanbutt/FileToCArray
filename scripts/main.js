@@ -134,6 +134,10 @@ function convert() {
         setStatus('Preparing biary data');
         byteArray = prepareBinary(binBinaryFileHolder);
     }
+	
+	// force to print only 10 lines
+	colNum = (imageWidth * imageHeight) / 10;
+	
     setStatus('Converting data to string');
     stringData += convertToString(byteArray, colNum, isImage, imageHeight, imageWidth);
     //console.log('Result: ' + stringData);
@@ -235,7 +239,7 @@ function convertToString(data, colNum, isImage, imageHeight, imageWidth) {
 
     resultString += '// array size is ' + dataLength + '\r\n';
     resultString += assebleSignature() + ' = {\r\n  ';
-    resultString += stringConverter.convert(actualDataLength, bytesPerPixel, conversionType, multiLine, endianness, colNumber, data);
+    resultString += stringConverter.convertReverse(actualDataLength, bytesPerPixel, conversionType, multiLine, endianness, colNumber, data);
     resultString += '\r\n};';
 
     return resultString;
