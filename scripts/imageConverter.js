@@ -17,8 +17,11 @@ var imageConverter = {
         var newPixelData = new Array(4);
         switch (mode) {
             case '32':
-                retData = [r, g, b, a];
-                newPixelData = [r, g, b, a];
+                //retData = [r, g, b, a];
+               // newPixelData = [r, g, b, a];
+				
+                retData = [a, r, g, b];
+                newPixelData = [a, r, g, b];
                 break;
             case '24':
                 retData = [r, g, b];

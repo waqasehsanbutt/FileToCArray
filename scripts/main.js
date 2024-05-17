@@ -136,7 +136,7 @@ function convert() {
     }
 	
 	// force to print only 10 lines
-	colNum = (imageWidth * imageHeight) / 10;
+	// colNum = (imageWidth * imageHeight) / 10;
 	
     setStatus('Converting data to string');
     stringData += convertToString(byteArray, colNum, isImage, imageHeight, imageWidth);
